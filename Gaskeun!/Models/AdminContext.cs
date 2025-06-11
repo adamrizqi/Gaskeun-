@@ -12,7 +12,7 @@ namespace Gaskeun_.Models
         public bool CekAdmin(string username, string password)
         {
             bool isSucces = false;
-            string conStr = "Server=localhost;Port=5432;User Id=postgres;Password=f4m1l149;Database=Rental;";
+            string conStr = "Server=localhost;Port=5432;User Id=postgres;Password=postgres;Database=Rental;";
             using (NpgsqlConnection conn = new NpgsqlConnection(conStr))
             {
                 string sqlAdmin = "SELECT COUNT(1) FROM akun WHERE username = @username AND password = @password AND role = @role";

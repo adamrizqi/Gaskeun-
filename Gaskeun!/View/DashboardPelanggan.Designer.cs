@@ -65,17 +65,19 @@ partial class DashboardPelanggan
         Header.Controls.Add(Judul);
         Header.Dock = DockStyle.Top;
         Header.Location = new Point(0, 0);
+        Header.Margin = new Padding(2);
         Header.Name = "Header";
-        Header.Size = new Size(2910, 147);
+        Header.Size = new Size(1920, 92);
         Header.TabIndex = 0;
         // 
         // imglogout
         // 
         imglogout.Cursor = Cursors.Hand;
         imglogout.Image = Properties.Resources.logout;
-        imglogout.Location = new Point(2592, 58);
+        imglogout.Location = new Point(1749, 34);
+        imglogout.Margin = new Padding(2);
         imglogout.Name = "imglogout";
-        imglogout.Size = new Size(41, 40);
+        imglogout.Size = new Size(25, 25);
         imglogout.SizeMode = PictureBoxSizeMode.Zoom;
         imglogout.TabIndex = 4;
         imglogout.TabStop = false;
@@ -84,9 +86,10 @@ partial class DashboardPelanggan
         // imgprofil
         // 
         imgprofil.Image = Properties.Resources.user__1_;
-        imgprofil.Location = new Point(2759, 48);
+        imgprofil.Location = new Point(1852, 28);
+        imgprofil.Margin = new Padding(2);
         imgprofil.Name = "imgprofil";
-        imgprofil.Size = new Size(58, 58);
+        imgprofil.Size = new Size(36, 36);
         imgprofil.SizeMode = PictureBoxSizeMode.Zoom;
         imgprofil.TabIndex = 3;
         imgprofil.TabStop = false;
@@ -94,9 +97,10 @@ partial class DashboardPelanggan
         // imgRiwayat
         // 
         imgRiwayat.Image = Properties.Resources.history;
-        imgRiwayat.Location = new Point(2680, 58);
+        imgRiwayat.Location = new Point(1803, 34);
+        imgRiwayat.Margin = new Padding(2);
         imgRiwayat.Name = "imgRiwayat";
-        imgRiwayat.Size = new Size(41, 40);
+        imgRiwayat.Size = new Size(25, 25);
         imgRiwayat.SizeMode = PictureBoxSizeMode.Zoom;
         imgRiwayat.TabIndex = 2;
         imgRiwayat.TabStop = false;
@@ -105,9 +109,10 @@ partial class DashboardPelanggan
         // 
         panelsearch.Controls.Add(textSearch);
         panelsearch.Controls.Add(ikonsearch);
-        panelsearch.Location = new Point(322, 35);
+        panelsearch.Location = new Point(198, 22);
+        panelsearch.Margin = new Padding(2);
         panelsearch.Name = "panelsearch";
-        panelsearch.Size = new Size(1211, 70);
+        panelsearch.Size = new Size(745, 44);
         panelsearch.TabIndex = 1;
         panelsearch.Paint += panelsearch_Paint;
         // 
@@ -116,10 +121,11 @@ partial class DashboardPelanggan
         textSearch.BorderStyle = BorderStyle.None;
         textSearch.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
         textSearch.ForeColor = Color.FromArgb(172, 172, 172);
-        textSearch.Location = new Point(94, 19);
+        textSearch.Location = new Point(58, 12);
+        textSearch.Margin = new Padding(2);
         textSearch.Multiline = true;
         textSearch.Name = "textSearch";
-        textSearch.Size = new Size(595, 48);
+        textSearch.Size = new Size(366, 30);
         textSearch.TabIndex = 99;
         textSearch.TabStop = false;
         textSearch.Text = "Search anything";
@@ -131,9 +137,10 @@ partial class DashboardPelanggan
         // ikonsearch
         // 
         ikonsearch.Image = Properties.Resources.zoom_tool__1_;
-        ikonsearch.Location = new Point(23, 10);
+        ikonsearch.Location = new Point(14, 6);
+        ikonsearch.Margin = new Padding(2);
         ikonsearch.Name = "ikonsearch";
-        ikonsearch.Size = new Size(54, 54);
+        ikonsearch.Size = new Size(33, 34);
         ikonsearch.SizeMode = PictureBoxSizeMode.Zoom;
         ikonsearch.TabIndex = 0;
         ikonsearch.TabStop = false;
@@ -143,9 +150,10 @@ partial class DashboardPelanggan
         Judul.AutoSize = true;
         Judul.Font = new Font("Segoe UI", 13.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
         Judul.ForeColor = Color.FromArgb(110, 91, 208);
-        Judul.Location = new Point(52, 48);
+        Judul.Location = new Point(32, 30);
+        Judul.Margin = new Padding(2, 0, 2, 0);
         Judul.Name = "Judul";
-        Judul.Size = new Size(184, 50);
+        Judul.Size = new Size(122, 32);
         Judul.TabIndex = 0;
         Judul.Text = "GasKeun!";
         // 
@@ -154,17 +162,19 @@ partial class DashboardPelanggan
         panelFilter.Controls.Add(btnmotor);
         panelFilter.Controls.Add(btnmobil);
         panelFilter.Controls.Add(btnsemua);
-        panelFilter.Location = new Point(72, 1310);
+        panelFilter.Location = new Point(44, 819);
+        panelFilter.Margin = new Padding(2);
         panelFilter.Name = "panelFilter";
-        panelFilter.Size = new Size(2693, 102);
+        panelFilter.Size = new Size(1831, 64);
         panelFilter.TabIndex = 2;
         // 
         // btnmotor
         // 
         btnmotor.FlatStyle = FlatStyle.Flat;
-        btnmotor.Location = new Point(458, 29);
+        btnmotor.Location = new Point(282, 18);
+        btnmotor.Margin = new Padding(2);
         btnmotor.Name = "btnmotor";
-        btnmotor.Size = new Size(150, 46);
+        btnmotor.Size = new Size(92, 29);
         btnmotor.TabIndex = 2;
         btnmotor.Text = "Motor";
         btnmotor.UseVisualStyleBackColor = true;
@@ -173,9 +183,10 @@ partial class DashboardPelanggan
         // btnmobil
         // 
         btnmobil.FlatStyle = FlatStyle.Flat;
-        btnmobil.Location = new Point(270, 29);
+        btnmobil.Location = new Point(166, 18);
+        btnmobil.Margin = new Padding(2);
         btnmobil.Name = "btnmobil";
-        btnmobil.Size = new Size(150, 46);
+        btnmobil.Size = new Size(92, 29);
         btnmobil.TabIndex = 1;
         btnmobil.Text = "Mobil";
         btnmobil.UseVisualStyleBackColor = true;
@@ -184,9 +195,10 @@ partial class DashboardPelanggan
         // btnsemua
         // 
         btnsemua.FlatStyle = FlatStyle.Flat;
-        btnsemua.Location = new Point(76, 29);
+        btnsemua.Location = new Point(47, 18);
+        btnsemua.Margin = new Padding(2);
         btnsemua.Name = "btnsemua";
-        btnsemua.Size = new Size(150, 46);
+        btnsemua.Size = new Size(92, 29);
         btnsemua.TabIndex = 0;
         btnsemua.Text = "Semua";
         btnsemua.UseVisualStyleBackColor = true;
@@ -195,9 +207,10 @@ partial class DashboardPelanggan
         // imgbanner
         // 
         imgbanner.Image = Properties.Resources.Screenshot_2025_05_17_124451;
-        imgbanner.Location = new Point(3, 3);
+        imgbanner.Location = new Point(2, 2);
+        imgbanner.Margin = new Padding(2);
         imgbanner.Name = "imgbanner";
-        imgbanner.Size = new Size(2693, 1125);
+        imgbanner.Size = new Size(1812, 703);
         imgbanner.SizeMode = PictureBoxSizeMode.StretchImage;
         imgbanner.TabIndex = 1;
         imgbanner.TabStop = false;
@@ -206,21 +219,23 @@ partial class DashboardPelanggan
         // 
         flowkendaraan.AutoScroll = true;
         flowkendaraan.Controls.Add(imgbanner);
-        flowkendaraan.Location = new Point(72, 179);
+        flowkendaraan.Location = new Point(44, 112);
+        flowkendaraan.Margin = new Padding(2);
         flowkendaraan.Name = "flowkendaraan";
-        flowkendaraan.Size = new Size(2797, 1608);
+        flowkendaraan.Size = new Size(1876, 1005);
         flowkendaraan.TabIndex = 2;
         // 
         // DashboardPelanggan
         // 
-        AutoScaleDimensions = new SizeF(13F, 32F);
+        AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.FromArgb(245, 247, 249);
-        ClientSize = new Size(2910, 1830);
+        ClientSize = new Size(1920, 1055);
         Controls.Add(panelFilter);
         Controls.Add(Header);
         Controls.Add(flowkendaraan);
         FormBorderStyle = FormBorderStyle.None;
+        Margin = new Padding(2);
         MaximizeBox = false;
         MinimizeBox = false;
         Name = "DashboardPelanggan";

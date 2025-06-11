@@ -83,26 +83,6 @@ namespace Gaskeun_.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _10782844_19199268__1_1 {
-            get {
-                object obj = ResourceManager.GetObject("10782844_19199268 (1)1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _10782844_19199269 {
-            get {
-                object obj = ResourceManager.GetObject("10782844_19199269", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap _11668704_20945729_removebg_preview__1_ {
             get {
                 object obj = ResourceManager.GetObject("11668704_20945729-removebg-preview (1)", resourceCulture);
@@ -113,29 +93,9 @@ namespace Gaskeun_.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _11668704_20945729_removebg_preview__1_1 {
-            get {
-                object obj = ResourceManager.GetObject("11668704_20945729-removebg-preview (1)1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Blue_Wave_Gradient_Wallpaper {
             get {
                 object obj = ResourceManager.GetObject("Blue Wave Gradient Wallpaper", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Blue_Wave_Gradient_Wallpaper1 {
-            get {
-                object obj = ResourceManager.GetObject("Blue Wave Gradient Wallpaper1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,16 +123,6 @@ namespace Gaskeun_.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap download__1_1 {
-            get {
-                object obj = ResourceManager.GetObject("download (1)1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap download__3_ {
             get {
                 object obj = ResourceManager.GetObject("download (3)", resourceCulture);
@@ -183,39 +133,9 @@ namespace Gaskeun_.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap download__3_1 {
-            get {
-                object obj = ResourceManager.GetObject("download (3)1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap download1 {
-            get {
-                object obj = ResourceManager.GetObject("download1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Free_Vector___Abstract_background_gradient_colorful_design {
             get {
                 object obj = ResourceManager.GetObject("Free Vector _ Abstract background gradient colorful design", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Free_Vector___Abstract_background_gradient_colorful_design1 {
-            get {
-                object obj = ResourceManager.GetObject("Free Vector _ Abstract background gradient colorful design1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,29 +163,9 @@ namespace Gaskeun_.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_closed_eye_27 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-closed-eye-27", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap icons8_eye_26 {
             get {
                 object obj = ResourceManager.GetObject("icons8-eye-26", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_eye_27 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-eye-27", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -306,16 +206,6 @@ namespace Gaskeun_.Properties {
         internal static System.Drawing.Bitmap Vector_classic_blue_background_wallpaper {
             get {
                 object obj = ResourceManager.GetObject("Vector classic blue background wallpaper", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Vector_classic_blue_background_wallpaper1 {
-            get {
-                object obj = ResourceManager.GetObject("Vector classic blue background wallpaper1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
