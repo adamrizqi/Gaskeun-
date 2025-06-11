@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace Gaskeun_.Models
 {
-    public class AdminContext
+    public class AdminContext : Connection
     {
         public bool CekAdmin(string username, string password)
         {
             bool isSucces = false;
-            string conStr = "Server=localhost;Port=5432;User Id=postgres;Password=postgres;Database=Rental;";
-            using (NpgsqlConnection conn = new NpgsqlConnection(conStr))
+            using (var conn = GetConnection())
             {
                 string sqlAdmin = "SELECT COUNT(1) FROM akun WHERE username = @username AND password = @password AND role = @role";
                 conn.Open();
