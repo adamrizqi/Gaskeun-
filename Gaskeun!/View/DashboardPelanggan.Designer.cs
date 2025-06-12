@@ -85,6 +85,7 @@ partial class DashboardPelanggan
         // 
         // imgprofil
         // 
+        imgprofil.Cursor = Cursors.Hand;
         imgprofil.Image = Properties.Resources.user__1_;
         imgprofil.Location = new Point(1852, 28);
         imgprofil.Margin = new Padding(2);
@@ -93,6 +94,7 @@ partial class DashboardPelanggan
         imgprofil.SizeMode = PictureBoxSizeMode.Zoom;
         imgprofil.TabIndex = 3;
         imgprofil.TabStop = false;
+        imgprofil.Click += imgprofil_Click;
         // 
         // imgRiwayat
         // 

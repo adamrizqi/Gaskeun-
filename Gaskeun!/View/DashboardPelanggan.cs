@@ -11,6 +11,7 @@ namespace Gaskeun_.View
     public partial class DashboardPelanggan : Form
     {
         KendaraanControl kendaraanControl = new KendaraanControl();
+        private UserController controller = new UserController();
 
         private string jenisMobil = "Mobil";
         private string jenisMotor = "Motor";
@@ -24,6 +25,23 @@ namespace Gaskeun_.View
             SetFilterButtonActive(btnsemua);
             LoadDataKendaraan("Semua");
             UIHelper.MakeRoundedCorners(imgbanner, 40);
+
+            string fotoUrl = controller.GetUserPhoto(Session.CurrentUserId);
+            if (!string.IsNullOrEmpty(fotoUrl))
+            {
+                try
+                {
+                    imgprofil.Load(fotoUrl); // Load dari URL Cloudinary
+                }
+                catch
+                {
+                    imgprofil.Image = Properties.Resources.user__1_; // fallback gambar default
+                }
+            }
+            else
+            {
+                imgprofil.Image = Properties.Resources.user__1_; // jika kosong, tampilkan default
+            }
         }
 
         private void panelsearch_Paint(object sender, PaintEventArgs e)
@@ -49,16 +67,13 @@ namespace Gaskeun_.View
             flowkendaraan.Controls.Add(imgbanner);
             flowkendaraan.Controls.Add(panelFilter);
 
-            List<Kendaraan> kendaraanList;
+            List<Kendaraan> kendaraanList = new List<Kendaraan>();
 
             if (filter == "Semua")
             {
-                var listMobil = kendaraanControl.ReadKendaraan(jenisMobil);
-                var listMotor = kendaraanControl.ReadKendaraan(jenisMotor);
+                kendaraanList.AddRange(kendaraanControl.ReadKendaraan(jenisMobil));
+                kendaraanList.AddRange(kendaraanControl.ReadKendaraan(jenisMotor));
 
-                kendaraanList = new List<Kendaraan>();
-                kendaraanList.AddRange(listMotor);
-                kendaraanList.AddRange(listMobil);
             }
             else
             {
@@ -143,5 +158,12 @@ namespace Gaskeun_.View
             activeButton.ForeColor = Color.White;
         }
 
+        private void imgprofil_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ProfileForm profileForm = new ProfileForm(Session.CurrentUserId);
+            profileForm.ShowDialog();
+            this.Show();
+        }
     }
 }

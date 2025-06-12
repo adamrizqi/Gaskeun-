@@ -129,11 +129,6 @@ namespace Gaskeun_.View
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(txtboxpengambilan.Text))
-                {
-                    MessageBox.Show("Alamat Pengambilan tidak boleh kosong.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
                 if (datetglsewa.Value == DateTimePicker.MinimumDateTime || datetglsewa.CustomFormat == " ")
                 {
                     MessageBox.Show("Tanggal Penyewaan belum dipilih.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
