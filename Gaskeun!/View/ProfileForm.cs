@@ -16,7 +16,7 @@ namespace Gaskeun_.View
     public partial class ProfileForm : Form
     {
         private int currentUserId;
-        private UserController controller = new UserController();
+        private PelangganControl pelangganControl = new PelangganControl();
         public Cloudinary cloudinary;
         public const string CLOUD_NAME = "dqsnhqpta";
         public const string API_KEY = "415453362647782";
@@ -33,22 +33,21 @@ namespace Gaskeun_.View
 
         private void ProfileForm_Load(object sender, EventArgs e)
         {
-            var data = controller.LoadUser(currentUserId);
+            var data = pelangganControl.LoadUser(currentUserId);
             if (data != null)
             {
-                lblUsername.Text = data["username"].ToString();
-                lblEmail.Text = data["email"].ToString();
-                lblNoHp.Text = data["no_hp"].ToString();
+                lblUsername.Text = data.Username;
+                lblEmail.Text = data.Email;
+                lblNoHp.Text = data.NoHp;
 
-                
-                if (data["foto"] != DBNull.Value && !string.IsNullOrEmpty(data["foto"].ToString()))
+                if (!string.IsNullOrEmpty(data.Foto))
                 {
-                    image.Load(data["foto"].ToString());
+                    image.Load(data.Foto);
                 }
             }
-            dataGridHistory.DataSource = controller.GetHistoryTransaksi(currentUserId);
-
+            dataGridHistory.DataSource = pelangganControl.GetHistoryTransaksi(currentUserId);
         }
+
         private void InitCloudinary()
         {
             Account account = new Account(CLOUD_NAME, API_KEY, API_SECRET);
@@ -106,7 +105,7 @@ namespace Gaskeun_.View
                 InitCloudinary();
                 imageUrl = await UploadImageAsync(imagePath);
 
-                controller.UpdateUserImage(currentUserId, imageUrl);
+                pelangganControl.UpdateUserImage(currentUserId, imageUrl);
                 image.Load(imageUrl);
 
                 MessageBox.Show("Gambar berhasil diupload dan disimpan!");

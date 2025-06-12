@@ -11,7 +11,7 @@ namespace Gaskeun_.View
     public partial class DashboardPelanggan : Form
     {
         KendaraanControl kendaraanControl = new KendaraanControl();
-        private UserController controller = new UserController();
+        PelangganControl pelangganControl = new PelangganControl();
 
         private string jenisMobil = "Mobil";
         private string jenisMotor = "Motor";
@@ -26,7 +26,7 @@ namespace Gaskeun_.View
             LoadDataKendaraan("Semua");
             UIHelper.MakeRoundedCorners(imgbanner, 40);
 
-            string fotoUrl = controller.GetUserPhoto(Session.CurrentUserId);
+            string fotoUrl = pelangganControl.GetUserPhoto(Session.CurrentUserId);
             if (!string.IsNullOrEmpty(fotoUrl))
             {
                 try
