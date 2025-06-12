@@ -30,19 +30,15 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            btnSave = new Button();
             lblUsername = new Label();
             lblEmail = new Label();
             lblNoHp = new Label();
-            txtPassword = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            label11 = new Label();
-            label12 = new Label();
             btnUpload = new Button();
             btnChoose = new Button();
             image = new PictureBox();
@@ -60,15 +56,6 @@
             ((System.ComponentModel.ISupportInitialize)dataGridHistory).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // btnSave
-            // 
-            btnSave.Location = new Point(1480, 119);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
-            btnSave.TabIndex = 4;
-            btnSave.Text = "Save";
-            btnSave.UseVisualStyleBackColor = true;
             // 
             // lblUsername
             // 
@@ -99,13 +86,6 @@
             lblNoHp.Size = new Size(79, 29);
             lblNoHp.TabIndex = 7;
             lblNoHp.Text = "label3";
-            // 
-            // txtPassword
-            // 
-            txtPassword.Location = new Point(1320, 119);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(125, 27);
-            txtPassword.TabIndex = 10;
             // 
             // label1
             // 
@@ -167,27 +147,6 @@
             label8.Size = new Size(20, 29);
             label8.TabIndex = 18;
             label8.Text = ":";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(1047, 119);
-            label11.Name = "label11";
-            label11.Size = new Size(120, 29);
-            label11.TabIndex = 21;
-            label11.Text = "Password";
-            label11.Click += label11_Click;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.Location = new Point(1238, 119);
-            label12.Name = "label12";
-            label12.Size = new Size(20, 29);
-            label12.TabIndex = 22;
-            label12.Text = ":";
             // 
             // btnUpload
             // 
@@ -343,19 +302,15 @@
             Controls.Add(btnUpload);
             Controls.Add(btnChoose);
             Controls.Add(image);
-            Controls.Add(label12);
-            Controls.Add(label11);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(txtPassword);
             Controls.Add(lblNoHp);
             Controls.Add(lblEmail);
             Controls.Add(lblUsername);
-            Controls.Add(btnSave);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ProfileForm";
             Text = "Form3";
@@ -368,19 +323,15 @@
         }
 
         #endregion
-        private Button btnSave;
         private Label lblUsername;
         private Label lblEmail;
         private Label lblNoHp;
-        private TextBox txtPassword;
         private Label label1;
         private Label label2;
         private Label label3;
         private Label label6;
         private Label label7;
         private Label label8;
-        private Label label11;
-        private Label label12;
         private Button btnUpload;
         private Button btnChoose;
         private PictureBox image;

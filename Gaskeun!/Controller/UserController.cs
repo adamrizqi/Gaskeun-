@@ -17,12 +17,6 @@ namespace Gaskeun_.Controller
         {
             return model.GetUser(id);
         }
-
-        public void ChangePassword(int id, string newPassword)
-        {
-            model.UpdatePassword(id, newPassword);
-        }
-
         public void UpdateUserImage(int userId, string imageUrl)
         {
             model.UpdateUserImage(userId, imageUrl);

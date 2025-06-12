@@ -29,7 +29,6 @@ namespace Gaskeun_.View
             InitializeComponent();
             currentUserId = userId;
             this.Load += ProfileForm_Load;
-            btnSave.Click += btnSave_Click;
         }
 
         private void ProfileForm_Load(object sender, EventArgs e)
@@ -40,7 +39,6 @@ namespace Gaskeun_.View
                 lblUsername.Text = data["username"].ToString();
                 lblEmail.Text = data["email"].ToString();
                 lblNoHp.Text = data["no_hp"].ToString();
-                txtPassword.Text = data["password"].ToString();
 
                 
                 if (data["foto"] != DBNull.Value && !string.IsNullOrEmpty(data["foto"].ToString()))
@@ -51,20 +49,6 @@ namespace Gaskeun_.View
             dataGridHistory.DataSource = controller.GetHistoryTransaksi(currentUserId);
 
         }
-
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (txtPassword.Text.Length < 6)
-            {
-                MessageBox.Show("Password harus minimal 6 karakter.");
-                return;
-            }
-
-            controller.ChangePassword(currentUserId, txtPassword.Text);
-            MessageBox.Show("Password berhasil diperbarui.");
-        }
-
         private void InitCloudinary()
         {
             Account account = new Account(CLOUD_NAME, API_KEY, API_SECRET);
