@@ -31,16 +31,16 @@ namespace Gaskeun_.View
             {
                 try
                 {
-                    imgprofil.Load(fotoUrl); // Load dari URL Cloudinary
+                    imgprofil.Load(fotoUrl); 
                 }
                 catch
                 {
-                    imgprofil.Image = Properties.Resources.user__1_; // fallback gambar default
+                    imgprofil.Image = Properties.Resources.user__1_; 
                 }
             }
             else
             {
-                imgprofil.Image = Properties.Resources.user__1_; // jika kosong, tampilkan default
+                imgprofil.Image = Properties.Resources.user__1_;
             }
         }
 

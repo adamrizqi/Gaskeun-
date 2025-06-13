@@ -336,7 +336,6 @@
             Controls.Add(panel1);
             Name = "TransaksiPelanggan";
             Size = new Size(1637, 1025);
-            Load += TransaksiPelanggan_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

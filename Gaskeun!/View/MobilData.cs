@@ -101,7 +101,6 @@ namespace Gaskeun_.View
                 return;
             }
 
-            //Kendaraan newMobil = GetMobil();
             if (mobilControl.UpdateKendaraan(GetMobil(), platLama))
             {
                 MessageBox.Show("Data mobil berhasil diperbarui!");
@@ -120,7 +119,6 @@ namespace Gaskeun_.View
 
         private void btnHapus_Click(object sender, EventArgs e)
         {
-            //Kendaraan mobil = GetMobil();
             if (mobilControl.DeleteKendaraan(GetMobil()))
             {
                 MessageBox.Show("Data mobil berhasil dihapus!");
@@ -182,7 +180,6 @@ namespace Gaskeun_.View
             dataGridView1.Columns[8].Width = 160; // Lebar kolom HargaMinggu
         }
 
-        //Cloudinarystorage setup dan image upload
         private void cloudinaryStorage()
         {
             Account account = new Account(CLOUD_NAME, API_KEY, API_SECRET);

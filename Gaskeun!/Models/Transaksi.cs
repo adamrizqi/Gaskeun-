@@ -15,7 +15,7 @@ namespace Gaskeun_.Models
         public string JenisKendaraan { get; set; }
         public string NamaKendaraan { get; set; }
         public DateOnly TanggalSewa { get; set; }
-        public DateOnly TanggalKembali { get; set; }
+        public DateOnly? TanggalKembali { get; set; }
         public DateOnly TanggalKeterlambatan { get; set; }
         public string AlamatPengambilan { get; set; }
         public string Jaminan { get; set; }

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             btnUpload = new Button();
             btnChoose = new Button();
@@ -64,19 +64,19 @@
             label3 = new Label();
             panel2 = new Panel();
             label1 = new Label();
-            dataGridView1 = new DataGridView();
-            Plat = new DataGridViewTextBoxColumn();
-            NamaMobil = new DataGridViewTextBoxColumn();
-            Merk = new DataGridViewTextBoxColumn();
-            Tahun = new DataGridViewTextBoxColumn();
-            CC = new DataGridViewTextBoxColumn();
-            KapasitasBensin = new DataGridViewTextBoxColumn();
-            Gambar = new DataGridViewTextBoxColumn();
-            HargaHari = new DataGridViewTextBoxColumn();
-            HargaMinggu = new DataGridViewTextBoxColumn();
-            HargaBulan = new DataGridViewTextBoxColumn();
-            Status = new DataGridViewTextBoxColumn();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            Status = new DataGridViewTextBoxColumn();
+            HargaBulan = new DataGridViewTextBoxColumn();
+            HargaMinggu = new DataGridViewTextBoxColumn();
+            HargaHari = new DataGridViewTextBoxColumn();
+            Gambar = new DataGridViewTextBoxColumn();
+            KapasitasBensin = new DataGridViewTextBoxColumn();
+            CC = new DataGridViewTextBoxColumn();
+            Tahun = new DataGridViewTextBoxColumn();
+            Merk = new DataGridViewTextBoxColumn();
+            NamaMobil = new DataGridViewTextBoxColumn();
+            Plat = new DataGridViewTextBoxColumn();
+            dataGridView1 = new DataGridView();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)image).BeginInit();
             panel5.SuspendLayout();
@@ -506,106 +506,10 @@
             label1.TabIndex = 1;
             label1.Text = "Data Mobil";
             // 
-            // dataGridView1
+            // backgroundWorker1
             // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.Navy;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridView1.ColumnHeadersHeight = 40;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Plat, NamaMobil, Merk, Tahun, CC, KapasitasBensin, Gambar, HargaHari, HargaMinggu, HargaBulan, Status });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.Desktop;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.Location = new Point(34, 65);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 60;
-            dataGridView1.RowTemplate.Height = 40;
-            dataGridView1.Size = new Size(1507, 444);
-            dataGridView1.TabIndex = 0;
-            dataGridView1.CellClick += dataGridView1_CellClick_1;
-            // 
-            // Plat
-            // 
-            Plat.DataPropertyName = "Plat";
-            Plat.HeaderText = "Plat";
-            Plat.MinimumWidth = 6;
-            Plat.Name = "Plat";
-            // 
-            // NamaMobil
-            // 
-            NamaMobil.DataPropertyName = "NamaKendaraan";
-            NamaMobil.HeaderText = "Nama Mobil";
-            NamaMobil.MinimumWidth = 6;
-            NamaMobil.Name = "NamaMobil";
-            // 
-            // Merk
-            // 
-            Merk.DataPropertyName = "Merk";
-            Merk.HeaderText = "Merk";
-            Merk.MinimumWidth = 6;
-            Merk.Name = "Merk";
-            // 
-            // Tahun
-            // 
-            Tahun.DataPropertyName = "Tahun";
-            Tahun.HeaderText = "Tahun";
-            Tahun.MinimumWidth = 6;
-            Tahun.Name = "Tahun";
-            // 
-            // CC
-            // 
-            CC.DataPropertyName = "CC";
-            CC.HeaderText = "CC";
-            CC.MinimumWidth = 6;
-            CC.Name = "CC";
-            // 
-            // KapasitasBensin
-            // 
-            KapasitasBensin.DataPropertyName = "KapasitasBensin";
-            KapasitasBensin.HeaderText = "Bensin";
-            KapasitasBensin.MinimumWidth = 6;
-            KapasitasBensin.Name = "KapasitasBensin";
-            // 
-            // Gambar
-            // 
-            Gambar.DataPropertyName = "Gambar";
-            Gambar.HeaderText = "URL Gambar";
-            Gambar.MinimumWidth = 6;
-            Gambar.Name = "Gambar";
-            // 
-            // HargaHari
-            // 
-            HargaHari.DataPropertyName = "HargaHari";
-            HargaHari.HeaderText = "Harga/Hari";
-            HargaHari.MinimumWidth = 6;
-            HargaHari.Name = "HargaHari";
-            // 
-            // HargaMinggu
-            // 
-            HargaMinggu.DataPropertyName = "HargaMinggu";
-            HargaMinggu.HeaderText = "Harga/Minggu";
-            HargaMinggu.MinimumWidth = 6;
-            HargaMinggu.Name = "HargaMinggu";
-            // 
-            // HargaBulan
-            // 
-            HargaBulan.DataPropertyName = "HargaBulan";
-            HargaBulan.HeaderText = "Harga/Bulan";
-            HargaBulan.MinimumWidth = 6;
-            HargaBulan.Name = "HargaBulan";
+            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
+            backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
             // 
             // Status
             // 
@@ -614,10 +518,106 @@
             Status.MinimumWidth = 6;
             Status.Name = "Status";
             // 
-            // backgroundWorker1
+            // HargaBulan
             // 
-            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
-            backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
+            HargaBulan.DataPropertyName = "HargaBulan";
+            HargaBulan.HeaderText = "Harga/Bulan";
+            HargaBulan.MinimumWidth = 6;
+            HargaBulan.Name = "HargaBulan";
+            // 
+            // HargaMinggu
+            // 
+            HargaMinggu.DataPropertyName = "HargaMinggu";
+            HargaMinggu.HeaderText = "Harga/Minggu";
+            HargaMinggu.MinimumWidth = 6;
+            HargaMinggu.Name = "HargaMinggu";
+            // 
+            // HargaHari
+            // 
+            HargaHari.DataPropertyName = "HargaHari";
+            HargaHari.HeaderText = "Harga/Hari";
+            HargaHari.MinimumWidth = 6;
+            HargaHari.Name = "HargaHari";
+            // 
+            // Gambar
+            // 
+            Gambar.DataPropertyName = "Gambar";
+            Gambar.HeaderText = "URL Gambar";
+            Gambar.MinimumWidth = 6;
+            Gambar.Name = "Gambar";
+            // 
+            // KapasitasBensin
+            // 
+            KapasitasBensin.DataPropertyName = "KapasitasBensin";
+            KapasitasBensin.HeaderText = "Bensin";
+            KapasitasBensin.MinimumWidth = 6;
+            KapasitasBensin.Name = "KapasitasBensin";
+            // 
+            // CC
+            // 
+            CC.DataPropertyName = "CC";
+            CC.HeaderText = "CC";
+            CC.MinimumWidth = 6;
+            CC.Name = "CC";
+            // 
+            // Tahun
+            // 
+            Tahun.DataPropertyName = "Tahun";
+            Tahun.HeaderText = "Tahun";
+            Tahun.MinimumWidth = 6;
+            Tahun.Name = "Tahun";
+            // 
+            // Merk
+            // 
+            Merk.DataPropertyName = "Merk";
+            Merk.HeaderText = "Merk";
+            Merk.MinimumWidth = 6;
+            Merk.Name = "Merk";
+            // 
+            // NamaMobil
+            // 
+            NamaMobil.DataPropertyName = "NamaKendaraan";
+            NamaMobil.HeaderText = "Nama Mobil";
+            NamaMobil.MinimumWidth = 6;
+            NamaMobil.Name = "NamaMobil";
+            // 
+            // Plat
+            // 
+            Plat.DataPropertyName = "Plat";
+            Plat.HeaderText = "Plat";
+            Plat.MinimumWidth = 6;
+            Plat.Name = "Plat";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.Navy;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.ColumnHeadersHeight = 40;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Plat, NamaMobil, Merk, Tahun, CC, KapasitasBensin, Gambar, HargaHari, HargaMinggu, HargaBulan, Status });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.Desktop;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.Location = new Point(34, 65);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 60;
+            dataGridView1.RowTemplate.Height = 40;
+            dataGridView1.Size = new Size(1507, 444);
+            dataGridView1.TabIndex = 0;
+            dataGridView1.CellClick += dataGridView1_CellClick_1;
             // 
             // MobilData
             // 
@@ -669,7 +669,6 @@
         private Label label2;
         private Panel panel2;
         private Label label1;
-        private DataGridView dataGridView1;
         private Panel panel3;
         private Panel panel5;
         private Panel panel4;
@@ -678,6 +677,10 @@
         private PictureBox image;
         private Label label12;
         private TextBox tbCC;
+        private Button btnUpload;
+        private Button btnChoose;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn Plat;
         private DataGridViewTextBoxColumn NamaMobil;
         private DataGridViewTextBoxColumn Merk;
@@ -689,8 +692,5 @@
         private DataGridViewTextBoxColumn HargaMinggu;
         private DataGridViewTextBoxColumn HargaBulan;
         private DataGridViewTextBoxColumn Status;
-        private Button btnUpload;
-        private Button btnChoose;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

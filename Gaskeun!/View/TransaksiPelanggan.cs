@@ -24,12 +24,6 @@ namespace Gaskeun_.View
             dataGridView1.DataSource = transaksiControl.ReadTransaksi();
             dtTglKeterlambatan.ShowCheckBox = true;
         }
-        private void TransaksiPelanggan_Load(object sender, EventArgs e)
-        {
-            //dataGridView1.Columns[1].Width = 175; // Lebar kolom JenisKendaraan
-            //dataGridView1.Columns[2].Width = 190; // Lebar kolom NamaKendaraan
-            //dataGridView1.Columns[4].Width = 180; // Lebar kolom TanggalKembali
-        }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)

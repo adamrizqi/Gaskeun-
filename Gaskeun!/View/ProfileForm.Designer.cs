@@ -43,15 +43,18 @@
             btnChoose = new Button();
             image = new PictureBox();
             dataGridHistory = new DataGridView();
-            NamaKendaraan = new DataGridViewTextBoxColumn();
             JenisKendaraan = new DataGridViewTextBoxColumn();
-            PaketSewa = new DataGridViewTextBoxColumn();
+            NamaKendaraan = new DataGridViewTextBoxColumn();
             TanggalSewa = new DataGridViewTextBoxColumn();
             TanggalPengembalian = new DataGridViewTextBoxColumn();
+            AlamatPengambilan = new DataGridViewTextBoxColumn();
             Durasi = new DataGridViewTextBoxColumn();
+            PaketSewa = new DataGridViewTextBoxColumn();
+            MetodePembayaran = new DataGridViewTextBoxColumn();
             Harga = new DataGridViewTextBoxColumn();
             Status = new DataGridViewTextBoxColumn();
             pictureBox1 = new PictureBox();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)image).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridHistory).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -61,7 +64,7 @@
             // 
             lblUsername.AutoSize = true;
             lblUsername.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblUsername.Location = new Point(704, 115);
+            lblUsername.Location = new Point(752, 115);
             lblUsername.Name = "lblUsername";
             lblUsername.Size = new Size(79, 29);
             lblUsername.TabIndex = 5;
@@ -71,7 +74,7 @@
             // 
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblEmail.Location = new Point(704, 199);
+            lblEmail.Location = new Point(752, 199);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(79, 29);
             lblEmail.TabIndex = 6;
@@ -81,7 +84,7 @@
             // 
             lblNoHp.AutoSize = true;
             lblNoHp.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNoHp.Location = new Point(704, 289);
+            lblNoHp.Location = new Point(752, 289);
             lblNoHp.Name = "lblNoHp";
             lblNoHp.Size = new Size(79, 29);
             lblNoHp.TabIndex = 7;
@@ -91,7 +94,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(431, 115);
+            label1.Location = new Point(479, 115);
             label1.Name = "label1";
             label1.Size = new Size(124, 29);
             label1.TabIndex = 11;
@@ -101,18 +104,17 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(431, 199);
+            label2.Location = new Point(479, 199);
             label2.Name = "label2";
             label2.Size = new Size(74, 29);
             label2.TabIndex = 12;
             label2.Text = "Email";
-            label2.Click += label2_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(431, 289);
+            label3.Location = new Point(479, 289);
             label3.Name = "label3";
             label3.Size = new Size(84, 29);
             label3.TabIndex = 13;
@@ -122,7 +124,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(622, 115);
+            label6.Location = new Point(670, 115);
             label6.Name = "label6";
             label6.Size = new Size(20, 29);
             label6.TabIndex = 16;
@@ -132,7 +134,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(622, 289);
+            label7.Location = new Point(670, 289);
             label7.Name = "label7";
             label7.Size = new Size(20, 29);
             label7.TabIndex = 17;
@@ -142,7 +144,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(622, 199);
+            label8.Location = new Point(670, 199);
             label8.Name = "label8";
             label8.Size = new Size(20, 29);
             label8.TabIndex = 18;
@@ -158,13 +160,13 @@
             btnUpload.FlatStyle = FlatStyle.Flat;
             btnUpload.Font = new Font("Microsoft Sans Serif", 14F);
             btnUpload.ForeColor = Color.White;
-            btnUpload.Location = new Point(183, 342);
+            btnUpload.Location = new Point(231, 342);
             btnUpload.Name = "btnUpload";
             btnUpload.Size = new Size(142, 52);
             btnUpload.TabIndex = 37;
             btnUpload.Text = "Upload";
             btnUpload.UseVisualStyleBackColor = false;
-            btnUpload.Click += btnUpload_Click_1;
+            btnUpload.Click += btnUpload_Click;
             // 
             // btnChoose
             // 
@@ -176,7 +178,7 @@
             btnChoose.FlatStyle = FlatStyle.Flat;
             btnChoose.Font = new Font("Microsoft Sans Serif", 14F);
             btnChoose.ForeColor = Color.White;
-            btnChoose.Location = new Point(18, 342);
+            btnChoose.Location = new Point(66, 342);
             btnChoose.Name = "btnChoose";
             btnChoose.Size = new Size(142, 52);
             btnChoose.TabIndex = 36;
@@ -187,7 +189,7 @@
             // image
             // 
             image.BackColor = Color.Transparent;
-            image.Location = new Point(18, 95);
+            image.Location = new Point(66, 95);
             image.Name = "image";
             image.Size = new Size(307, 223);
             image.SizeMode = PictureBoxSizeMode.Zoom;
@@ -207,7 +209,7 @@
             dataGridHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridHistory.ColumnHeadersHeight = 40;
             dataGridHistory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridHistory.Columns.AddRange(new DataGridViewColumn[] { NamaKendaraan, JenisKendaraan, PaketSewa, TanggalSewa, TanggalPengembalian, Durasi, Harga, Status });
+            dataGridHistory.Columns.AddRange(new DataGridViewColumn[] { JenisKendaraan, NamaKendaraan, TanggalSewa, TanggalPengembalian, AlamatPengambilan, Durasi, PaketSewa, MetodePembayaran, Harga, Status });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F);
@@ -217,19 +219,12 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridHistory.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridHistory.EnableHeadersVisualStyles = false;
-            dataGridHistory.Location = new Point(4, 461);
+            dataGridHistory.Location = new Point(54, 461);
             dataGridHistory.Name = "dataGridHistory";
             dataGridHistory.RowHeadersWidth = 60;
             dataGridHistory.RowTemplate.Height = 40;
-            dataGridHistory.Size = new Size(1896, 615);
+            dataGridHistory.Size = new Size(1811, 576);
             dataGridHistory.TabIndex = 38;
-            // 
-            // NamaKendaraan
-            // 
-            NamaKendaraan.DataPropertyName = "NamaKendaraan";
-            NamaKendaraan.HeaderText = "Nama Kendaraan";
-            NamaKendaraan.MinimumWidth = 6;
-            NamaKendaraan.Name = "NamaKendaraan";
             // 
             // JenisKendaraan
             // 
@@ -238,12 +233,12 @@
             JenisKendaraan.MinimumWidth = 6;
             JenisKendaraan.Name = "JenisKendaraan";
             // 
-            // PaketSewa
+            // NamaKendaraan
             // 
-            PaketSewa.DataPropertyName = "PaketSewa";
-            PaketSewa.HeaderText = "Paket Sewa";
-            PaketSewa.MinimumWidth = 6;
-            PaketSewa.Name = "PaketSewa";
+            NamaKendaraan.DataPropertyName = "NamaKendaraan";
+            NamaKendaraan.HeaderText = "Nama Kendaraan";
+            NamaKendaraan.MinimumWidth = 6;
+            NamaKendaraan.Name = "NamaKendaraan";
             // 
             // TanggalSewa
             // 
@@ -254,10 +249,17 @@
             // 
             // TanggalPengembalian
             // 
-            TanggalPengembalian.DataPropertyName = "TanggalPengembalian";
+            TanggalPengembalian.DataPropertyName = "TanggalKembali";
             TanggalPengembalian.HeaderText = "Tanggal Pengembalian";
             TanggalPengembalian.MinimumWidth = 6;
             TanggalPengembalian.Name = "TanggalPengembalian";
+            // 
+            // AlamatPengambilan
+            // 
+            AlamatPengambilan.DataPropertyName = "AlamatPengambilan";
+            AlamatPengambilan.HeaderText = "Alamat Pengambilan";
+            AlamatPengambilan.MinimumWidth = 6;
+            AlamatPengambilan.Name = "AlamatPengambilan";
             // 
             // Durasi
             // 
@@ -265,6 +267,20 @@
             Durasi.HeaderText = "Durasi";
             Durasi.MinimumWidth = 6;
             Durasi.Name = "Durasi";
+            // 
+            // PaketSewa
+            // 
+            PaketSewa.DataPropertyName = "PaketSewa";
+            PaketSewa.HeaderText = "Paket Sewa";
+            PaketSewa.MinimumWidth = 6;
+            PaketSewa.Name = "PaketSewa";
+            // 
+            // MetodePembayaran
+            // 
+            MetodePembayaran.DataPropertyName = "MetodePembayaran";
+            MetodePembayaran.HeaderText = "Metode Pembayaran";
+            MetodePembayaran.MinimumWidth = 6;
+            MetodePembayaran.Name = "MetodePembayaran";
             // 
             // Harga
             // 
@@ -284,7 +300,7 @@
             // 
             pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Image = Properties.Resources.icons8_back_100;
-            pictureBox1.Location = new Point(18, 14);
+            pictureBox1.Location = new Point(21, 22);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(51, 35);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -336,14 +352,17 @@
         private Button btnChoose;
         private PictureBox image;
         private DataGridView dataGridHistory;
-        private DataGridViewTextBoxColumn NamaKendaraan;
+        private PictureBox pictureBox1;
         private DataGridViewTextBoxColumn JenisKendaraan;
-        private DataGridViewTextBoxColumn PaketSewa;
+        private DataGridViewTextBoxColumn NamaKendaraan;
         private DataGridViewTextBoxColumn TanggalSewa;
         private DataGridViewTextBoxColumn TanggalPengembalian;
+        private DataGridViewTextBoxColumn AlamatPengambilan;
         private DataGridViewTextBoxColumn Durasi;
+        private DataGridViewTextBoxColumn PaketSewa;
+        private DataGridViewTextBoxColumn MetodePembayaran;
         private DataGridViewTextBoxColumn Harga;
         private DataGridViewTextBoxColumn Status;
-        private PictureBox pictureBox1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

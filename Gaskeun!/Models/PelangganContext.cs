@@ -18,18 +18,18 @@ namespace Gaskeun_.Models
             int idAkun = 0;
             using (NpgsqlConnection conn = GetConnection())
             {
-                string sql = "SELECT id_akun FROM akun WHERE username = @username AND password = @password AND role = @role";
+                string sql = "SELECT id_akun FROM akun WHERE username = @username " +
+                    "AND password = @password AND role = @role";
                 conn.Open();
-                using (var cmd = new NpgsqlCommand(sql, conn))
+                using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("username", username);
                     cmd.Parameters.AddWithValue("password", password);
                     cmd.Parameters.AddWithValue("role", "pelanggan");
-
-                    var result = cmd.ExecuteScalar();
-                    if (result != null && result != DBNull.Value)
+                    var hasil = cmd.ExecuteScalar();
+                    if (hasil != null && hasil != DBNull.Value)
                     {
-                        idAkun = Convert.ToInt32(result);
+                        idAkun = Convert.ToInt32(hasil);
                     }
                 }
             }
@@ -42,22 +42,23 @@ namespace Gaskeun_.Models
             using (var conn = GetConnection())
             {
                 string sql = @"INSERT INTO akun(role, username, email, password, no_hp, status)
-                               VALUES(@role, @username, @email, @password, @no_hp, @status)";
+                                VALUES(@role, @username, @email, @password, @no_hp, @status);";
                 conn.Open();
-                using (var cmd = new NpgsqlCommand(sql, conn))
+                using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
                 {
-                    cmd.Parameters.AddWithValue("role", "pelanggan");
-                    cmd.Parameters.AddWithValue("username", pelanggan.Username);
-                    cmd.Parameters.AddWithValue("email", pelanggan.Email);
-                    cmd.Parameters.AddWithValue("password", pelanggan.Password);
-                    cmd.Parameters.AddWithValue("no_hp", pelanggan.NoHp);
-                    cmd.Parameters.AddWithValue("status", pelanggan.Status);
+                    cmd.Parameters.Add(new NpgsqlParameter("@role", "pelanggan"));
+                    cmd.Parameters.Add(new NpgsqlParameter("@username", pelanggan.Username));
+                    cmd.Parameters.Add(new NpgsqlParameter("@email", pelanggan.Email));
+                    cmd.Parameters.Add(new NpgsqlParameter("@password", pelanggan.Password));
+                    cmd.Parameters.Add(new NpgsqlParameter("@no_hp", pelanggan.NoHp));
+                    cmd.Parameters.Add(new NpgsqlParameter("@status", pelanggan.Status));
 
+                    cmd.CommandType = System.Data.CommandType.Text;
                     int jmlDataBaru = cmd.ExecuteNonQuery();
                     if (jmlDataBaru > 0)
                     {
                         isSucces = true;
-                        listPelanggan.Add(pelanggan);
+                        this.listPelanggan.Add(pelanggan);
                     }
                 }
             }
@@ -70,22 +71,23 @@ namespace Gaskeun_.Models
             {
                 string query = "SELECT id_akun, username, email, password, no_hp, status FROM akun WHERE role = 'pelanggan'";
                 conn.Open();
-                using (var cmd = new NpgsqlCommand(query, conn))
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
                 {
-                    var reader = cmd.ExecuteReader();
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    NpgsqlDataReader reader = cmd.ExecuteReader();
                     listPelanggan.Clear();
                     while (reader.Read())
                     {
-                        Pelanggan p = new Pelanggan
+                        Pelanggan dataPelanggan = new Pelanggan
                         {
                             IdAkun = reader.GetInt32(reader.GetOrdinal("id_akun")),
                             Username = reader["username"].ToString(),
                             Email = reader["email"].ToString(),
-                            Password = reader["password"].ToString(),
                             NoHp = reader["no_hp"].ToString(),
+                            Password = reader["password"].ToString(),
                             Status = reader["status"].ToString()
                         };
-                        listPelanggan.Add(p);
+                        listPelanggan.Add(dataPelanggan);
                     }
                 }
             }
@@ -97,33 +99,39 @@ namespace Gaskeun_.Models
             bool isSucces = false;
             using (var conn = GetConnection())
             {
-                string query = @"UPDATE akun SET username = @username, email = @email, no_hp = @no_hp, status = @status
-                                 WHERE no_hp = @no_hp";
+                string query = @"UPDATE akun
+                                SET username = @username, email = @email, no_hp = @no_hp, status = @status
+                                WHERE no_hp = @no_hp";
                 conn.Open();
-                using (var cmd = new NpgsqlCommand(query, conn))
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("username", pelanggan.Username);
-                    cmd.Parameters.AddWithValue("email", pelanggan.Email);
-                    cmd.Parameters.AddWithValue("no_hp", pelanggan.NoHp);
-                    cmd.Parameters.AddWithValue("status", pelanggan.Status);
+                    cmd.Parameters.Add(new NpgsqlParameter("@username", pelanggan.Username));
+                    cmd.Parameters.Add(new NpgsqlParameter("@email", pelanggan.Email));
+                    cmd.Parameters.Add(new NpgsqlParameter("@no_hp", pelanggan.NoHp));
+                    cmd.Parameters.Add(new NpgsqlParameter("@status", pelanggan.Status));
 
-                    int affected = cmd.ExecuteNonQuery();
-                    if (affected > 0)
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    int jmlDataTerupdate = cmd.ExecuteNonQuery();
+                    if (jmlDataTerupdate > 0)
                     {
                         isSucces = true;
-                        var data = listPelanggan.SingleOrDefault(p => p.NoHp == pelanggan.NoHp);
-                        if (data != null)
+                        foreach (var temp in this.listPelanggan)
                         {
-                            data.Username = pelanggan.Username;
-                            data.Email = pelanggan.Email;
-                            data.Status = pelanggan.Status;
+                            var t = temp as Pelanggan;
+                            if (t != null && t.NoHp.Equals(pelanggan.NoHp))
+                            {
+                                t.Username = pelanggan.Username;
+                                t.Email = pelanggan.Email;
+                                t.NoHp = pelanggan.NoHp;
+                                t.Password = pelanggan.Password;
+                                t.Status = pelanggan.Status;
+                            }
                         }
                     }
                 }
             }
             return isSucces;
         }
-
         public bool Delete(Pelanggan pelanggan)
         {
             bool isSucces = false;
@@ -131,23 +139,21 @@ namespace Gaskeun_.Models
             {
                 string query = @"DELETE FROM akun WHERE no_hp = @no_hp";
                 conn.Open();
-                using (var cmd = new NpgsqlCommand(query, conn))
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("no_hp", pelanggan.NoHp);
-                    int affected = cmd.ExecuteNonQuery();
-                    if (affected > 0)
+                    cmd.Parameters.Add(new NpgsqlParameter("@no_hp", pelanggan.NoHp));
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    int jmlDataDihapus = cmd.ExecuteNonQuery();
+                    if (jmlDataDihapus > 0)
                     {
-                        var item = listPelanggan.SingleOrDefault(p => p.NoHp == pelanggan.NoHp);
-                        if (item != null)
-                            listPelanggan.Remove(item);
                         isSucces = true;
+                        var itemToRemove = this.listPelanggan.Single(p => p.NoHp == pelanggan.NoHp);
+                        this.listPelanggan.Remove(itemToRemove);
                     }
                 }
             }
             return isSucces;
         }
-
-        // === FUNGSI DARI USER CONTEXT YANG DIGABUNGKAN ===
 
         public Pelanggan GetUser(int userId)
         {
@@ -184,33 +190,41 @@ namespace Gaskeun_.Models
             cmd.ExecuteNonQuery();
         }
 
-        public DataTable GetHistoryTransaksi(int userId)
+        public List<Transaksi> GetHistoryTransaksi(int userId)
         {
+            var listTransaksi = new List<Transaksi>();
+
             using var conn = GetConnection();
             conn.Open();
-            string query = @"
-        SELECT 
-            k.nama_kendaraan AS ""NamaKendaraan"",
-            k.jenis_kendaraan AS ""JenisKendaraan"",
-            t.paket_sewa AS ""PaketSewa"",
-            t.tanggal_sewa AS ""TanggalSewa"",
-            t.tanggal_pengembalian AS ""TanggalPengembalian"",
-            t.durasi AS ""Durasi"",
-            t.harga AS ""Harga"",
-            t.status AS ""Status""
-        FROM transaksi t
-        JOIN kendaraan k ON t.id_kendaraan = k.id_kendaraan
-        WHERE t.id_pelanggan = @id
-        ORDER BY t.tanggal_sewa DESC;
-    ";
+
+            string query = @"SELECT k.nama_kendaraan, k.jenis_kendaraan, t.paket_sewa, t.tanggal_sewa, t.tanggal_pengembalian, t.alamat_pengambilan, t.durasi, 
+                            t.metode_pembayaran, t.harga, t.status FROM transaksi t JOIN kendaraan k ON t.id_kendaraan = k.id_kendaraan WHERE t.id_pelanggan = @id 
+                            ORDER BY t.tanggal_sewa DESC;";
 
             using var cmd = new NpgsqlCommand(query, conn);
             cmd.Parameters.AddWithValue("id", userId);
 
-            using var adapter = new NpgsqlDataAdapter(cmd);
-            var dt = new DataTable();
-            adapter.Fill(dt);
-            return dt;
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                var transaksi = new Transaksi
+                {
+                    NamaKendaraan = reader["nama_kendaraan"].ToString(),
+                    JenisKendaraan = reader["jenis_kendaraan"].ToString(),
+                    PaketSewa = reader["paket_sewa"].ToString(),
+                    TanggalSewa = DateOnly.FromDateTime(reader.GetDateTime(reader.GetOrdinal("tanggal_sewa"))),
+                    TanggalKembali = DateOnly.FromDateTime(reader.GetDateTime(reader.GetOrdinal("tanggal_pengembalian"))),
+                    AlamatPengambilan = reader["alamat_pengambilan"].ToString(),
+                    Durasi = reader.GetInt32(reader.GetOrdinal("durasi")),
+                    MetodePembayaran = reader["metode_pembayaran"].ToString(),
+                    Harga = reader.GetDecimal(reader.GetOrdinal("harga")),
+                    Status = reader["status"].ToString()
+                };
+
+                listTransaksi.Add(transaksi);
+            }
+
+            return listTransaksi;
         }
     }
 }

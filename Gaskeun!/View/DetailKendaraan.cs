@@ -14,6 +14,7 @@ namespace Gaskeun_.View
     {
         public int IdKendaraan { get; set; }
         private Kendaraan kendaraan;
+        PelangganControl pelangganControl = new PelangganControl();
 
         public DetailKendaraan(Kendaraan kendaraan)
         {
@@ -26,6 +27,23 @@ namespace Gaskeun_.View
         {
             datetglsewa.Format = DateTimePickerFormat.Custom;
             datetglsewa.CustomFormat = " ";
+
+            string fotoUrl = pelangganControl.GetUserPhoto(Session.CurrentUserId);
+            if (!string.IsNullOrEmpty(fotoUrl))
+            {
+                try
+                {
+                    imgprofil.Load(fotoUrl);
+                }
+                catch
+                {
+                    imgprofil.Image = Properties.Resources.user__1_;
+                }
+            }
+            else
+            {
+                imgprofil.Image = Properties.Resources.user__1_;
+            }
         }
 
         private async Task LoadKendaraanDetailAsync()
@@ -55,11 +73,6 @@ namespace Gaskeun_.View
             lblhargabulanan.Text = $"Rp{kendaraan.HargaBulan:N0}/bulan";
         }
 
-        private void imglogout_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void datetglsewa_ValueChanged(object sender, EventArgs e)
         {
             {
@@ -67,7 +80,6 @@ namespace Gaskeun_.View
                 datetglsewa.CustomFormat = "dd MMM yyyy  HH:mm";
             }
         }
-
 
         private void cmboxdurasi_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -227,6 +239,19 @@ namespace Gaskeun_.View
         private void Judul_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void imgprofil_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ProfileForm profileForm = new ProfileForm(Session.CurrentUserId);
+            profileForm.ShowDialog();
+            this.Show();
         }
     }
 }

@@ -46,9 +46,19 @@ namespace Gaskeun_.View
                 }
             }
             dataGridHistory.DataSource = pelangganControl.GetHistoryTransaksi(currentUserId);
+
+            dataGridHistory.Columns["IdTransaksi"].Visible = false;
+            dataGridHistory.Columns["IdPelanggan"].Visible = false;
+            dataGridHistory.Columns["IdKendaraan"].Visible = false;
+            dataGridHistory.Columns["Username"].Visible = false;
+            dataGridHistory.Columns["TanggalKeterlambatan"].Visible = false;
+            dataGridHistory.Columns["Denda"].Visible = false;
+            dataGridHistory.Columns["MetodePembayaran"].Visible = false;
+            dataGridHistory.Columns["Jaminan"].Visible = false;
+
         }
 
-        private void InitCloudinary()
+        private void cloudinaryStorage()
         {
             Account account = new Account(CLOUD_NAME, API_KEY, API_SECRET);
             cloudinary = new Cloudinary(account);
@@ -68,18 +78,6 @@ namespace Gaskeun_.View
             });
         }
 
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnChoose_Click_1(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -92,17 +90,17 @@ namespace Gaskeun_.View
             }
         }
 
-        private async void btnUpload_Click_1(object sender, EventArgs e)
+        private async void btnUpload_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(imagePath))
             {
-                MessageBox.Show("Silakan pilih gambar terlebih dahulu.");
+                MessageBox.Show("Silakan pilih gambar terlebih dahulu");
                 return;
             }
 
             try
             {
-                InitCloudinary();
+                cloudinaryStorage();
                 imageUrl = await UploadImageAsync(imagePath);
 
                 pelangganControl.UpdateUserImage(currentUserId, imageUrl);
@@ -115,7 +113,6 @@ namespace Gaskeun_.View
                 MessageBox.Show("Terjadi kesalahan saat upload: " + ex.Message);
             }
         }
-
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {

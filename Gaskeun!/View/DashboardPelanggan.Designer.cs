@@ -33,7 +33,6 @@ partial class DashboardPelanggan
         Header = new Panel();
         imglogout = new PictureBox();
         imgprofil = new PictureBox();
-        imgRiwayat = new PictureBox();
         panelsearch = new Panel();
         textSearch = new TextBox();
         ikonsearch = new PictureBox();
@@ -47,7 +46,6 @@ partial class DashboardPelanggan
         Header.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)imglogout).BeginInit();
         ((System.ComponentModel.ISupportInitialize)imgprofil).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)imgRiwayat).BeginInit();
         panelsearch.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)ikonsearch).BeginInit();
         panelFilter.SuspendLayout();
@@ -60,7 +58,6 @@ partial class DashboardPelanggan
         Header.BackColor = Color.White;
         Header.Controls.Add(imglogout);
         Header.Controls.Add(imgprofil);
-        Header.Controls.Add(imgRiwayat);
         Header.Controls.Add(panelsearch);
         Header.Controls.Add(Judul);
         Header.Dock = DockStyle.Top;
@@ -74,7 +71,7 @@ partial class DashboardPelanggan
         // 
         imglogout.Cursor = Cursors.Hand;
         imglogout.Image = Properties.Resources.logout;
-        imglogout.Location = new Point(1749, 34);
+        imglogout.Location = new Point(1805, 34);
         imglogout.Margin = new Padding(2);
         imglogout.Name = "imglogout";
         imglogout.Size = new Size(25, 25);
@@ -95,17 +92,6 @@ partial class DashboardPelanggan
         imgprofil.TabIndex = 3;
         imgprofil.TabStop = false;
         imgprofil.Click += imgprofil_Click;
-        // 
-        // imgRiwayat
-        // 
-        imgRiwayat.Image = Properties.Resources.history;
-        imgRiwayat.Location = new Point(1803, 34);
-        imgRiwayat.Margin = new Padding(2);
-        imgRiwayat.Name = "imgRiwayat";
-        imgRiwayat.Size = new Size(25, 25);
-        imgRiwayat.SizeMode = PictureBoxSizeMode.Zoom;
-        imgRiwayat.TabIndex = 2;
-        imgRiwayat.TabStop = false;
         // 
         // panelsearch
         // 
@@ -249,7 +235,6 @@ partial class DashboardPelanggan
         Header.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)imglogout).EndInit();
         ((System.ComponentModel.ISupportInitialize)imgprofil).EndInit();
-        ((System.ComponentModel.ISupportInitialize)imgRiwayat).EndInit();
         panelsearch.ResumeLayout(false);
         panelsearch.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)ikonsearch).EndInit();
@@ -266,7 +251,6 @@ partial class DashboardPelanggan
     private Panel panelsearch;
     private TextBox textSearch;
     private PictureBox ikonsearch;
-    private PictureBox imgRiwayat;
     private PictureBox imgprofil;
     private PictureBox imglogout;
     private Panel panelFilter;
