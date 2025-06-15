@@ -428,7 +428,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AdminMainForm";
             WindowState = FormWindowState.Maximized;
-            Load += AdminMainForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);

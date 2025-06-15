@@ -20,7 +20,6 @@ namespace Gaskeun_.View
             InitializeComponent();
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = dashboardControl.ReadPelangganHariIni();
-
         }
 
         private void Dashboard_Load(object sender, EventArgs e)

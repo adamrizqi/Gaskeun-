@@ -51,18 +51,17 @@ namespace Gaskeun_.Models
 
             using (var conn = GetConnection())
             {
-                string query = @"SELECT id_kendaraan, plat, jenis_kendaraan, nama_kendaraan, merk, tahun, cc, kapasitas_bensin, gambar, harga_hari, harga_minggu, harga_bulan, status FROM kendaraan WHERE jenis_kendaraan = @jenis_kendaraan";
+                string query = @"SELECT id_kendaraan, plat, jenis_kendaraan, nama_kendaraan, merk, tahun, cc, kapasitas_bensin, gambar, harga_hari, harga_minggu, harga_bulan, status FROM kendaraan WHERE jenis_kendaraan = @jenis_kendaraan AND status != 'Dihapus'";
                 conn.Open();
                 using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
                 {
                     cmd.Parameters.Add(new NpgsqlParameter("@jenis_kendaraan", jenis));
                     cmd.CommandText = query;
-                    NpgsqlDataReader reader =cmd.ExecuteReader();
+                    NpgsqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
                         Kendaraan dataKendaraan = new Kendaraan();
-
                         dataKendaraan.IdKendaraan = reader.GetInt32(reader.GetOrdinal("id_kendaraan"));
                         dataKendaraan.Plat = (string)reader["plat"];
                         dataKendaraan.JenisKendaraan = reader["jenis_kendaraan"] as string;
@@ -76,7 +75,6 @@ namespace Gaskeun_.Models
                         dataKendaraan.HargaMinggu = (decimal)reader["harga_minggu"];
                         dataKendaraan.HargaBulan = (decimal)reader["harga_bulan"];
                         dataKendaraan.Status = (string)reader["status"];
-
                         resultList.Add(dataKendaraan);
                     }
                 }
@@ -143,18 +141,25 @@ namespace Gaskeun_.Models
             bool isSuccess = false;
             using (var conn = GetConnection())
             {
-                string query = @"DELETE FROM kendaraan WHERE plat = @plat;";
+                string query = @"UPDATE kendaraan SET status = @status WHERE plat = @plat;";
                 conn.Open();
                 using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
                 {
-                    cmd.Parameters.Add(new NpgsqlParameter(@"plat", kendaraan.Plat));
+                    cmd.Parameters.Add(new NpgsqlParameter(@"@plat", kendaraan.Plat));
+                    cmd.Parameters.Add(new NpgsqlParameter(@"status", "Dihapus"));
                     cmd.CommandType = System.Data.CommandType.Text;
-                    int jmlDataTerhapus = cmd.ExecuteNonQuery();
-                    if (jmlDataTerhapus > 0)
+                    int jmlDataTerupdate = cmd.ExecuteNonQuery();
+                    if (jmlDataTerupdate > 0)
                     {
                         isSuccess = true;
-                        var itemToRemove = listKendaraan.Single(k => k.Plat == kendaraan.Plat);
-                        this.listKendaraan.Remove(itemToRemove);
+                        foreach (var temp in this.listKendaraan)
+                        {
+                            var t = temp as Kendaraan;
+                            if (t != null && t.Plat.Equals(kendaraan.Plat))
+                            {
+                                t.Status = kendaraan.Status;
+                            }
+                        }
                     }
                 }
             }

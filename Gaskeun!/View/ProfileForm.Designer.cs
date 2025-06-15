@@ -55,6 +55,7 @@
             Status = new DataGridViewTextBoxColumn();
             pictureBox1 = new PictureBox();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)image).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridHistory).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -308,11 +309,23 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 13.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(54, 426);
+            label4.Margin = new Padding(2, 0, 2, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(216, 32);
+            label4.TabIndex = 40;
+            label4.Text = "Riwayat Transaksi";
+            // 
             // ProfileForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 1080);
+            Controls.Add(label4);
             Controls.Add(pictureBox1);
             Controls.Add(dataGridHistory);
             Controls.Add(btnUpload);
@@ -364,5 +377,6 @@
         private DataGridViewTextBoxColumn Harga;
         private DataGridViewTextBoxColumn Status;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Label label4;
     }
 }

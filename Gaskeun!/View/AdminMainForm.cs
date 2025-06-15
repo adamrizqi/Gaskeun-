@@ -90,12 +90,6 @@ namespace Gaskeun_.View
             usersData1.Visible = false;
             transaksiPelanggan1.Visible = true;
         }
-        private void AdminMainForm_Load(object sender, EventArgs e)
-        {
-            //this.WindowState = FormWindowState.Maximized;
-            //this.FormBorderStyle = FormBorderStyle.None;
-        }
-
         private void btnLogout_Click(object sender, EventArgs e)
         {
             Form1 loginForm = new Form1();

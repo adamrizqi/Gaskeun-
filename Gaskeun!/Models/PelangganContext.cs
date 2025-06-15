@@ -69,7 +69,7 @@ namespace Gaskeun_.Models
         {
             using (var conn = GetConnection())
             {
-                string query = "SELECT id_akun, username, email, password, no_hp, status FROM akun WHERE role = 'pelanggan'";
+                string query = "SELECT id_akun, username, email, password, no_hp, status FROM akun WHERE role = 'pelanggan' AND status != 'Dihapus'";
                 conn.Open();
                 using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
                 {
@@ -137,18 +137,25 @@ namespace Gaskeun_.Models
             bool isSucces = false;
             using (var conn = GetConnection())
             {
-                string query = @"DELETE FROM akun WHERE no_hp = @no_hp";
+                string query = @"UPDATE akun SET status = @status WHERE no_hp = @no_hp";
                 conn.Open();
                 using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
                 {
                     cmd.Parameters.Add(new NpgsqlParameter("@no_hp", pelanggan.NoHp));
+                    cmd.Parameters.Add(new NpgsqlParameter("@status", "Dihapus"));
                     cmd.CommandType = System.Data.CommandType.Text;
-                    int jmlDataDihapus = cmd.ExecuteNonQuery();
-                    if (jmlDataDihapus > 0)
+                    int jmlDataTerupdate = cmd.ExecuteNonQuery();
+                    if (jmlDataTerupdate > 0)
                     {
                         isSucces = true;
-                        var itemToRemove = this.listPelanggan.Single(p => p.NoHp == pelanggan.NoHp);
-                        this.listPelanggan.Remove(itemToRemove);
+                        foreach (var temp in this.listPelanggan)
+                        {
+                            var t = temp as Pelanggan;
+                            if (t != null && t.NoHp.Equals(pelanggan.NoHp))
+                            {
+                                t.Status = pelanggan.Status;
+                            }
+                        }
                     }
                 }
             }
@@ -161,7 +168,6 @@ namespace Gaskeun_.Models
             conn.Open();
             using var cmd = new NpgsqlCommand("SELECT * FROM akun WHERE id_akun = @id", conn);
             cmd.Parameters.AddWithValue("id", userId);
-
             using var reader = cmd.ExecuteReader();
             if (reader.Read())
             {
@@ -176,7 +182,6 @@ namespace Gaskeun_.Models
                     Foto = reader["foto"] == DBNull.Value ? null : reader["foto"].ToString()
                 };
             }
-
             return null;
         }
 
@@ -190,7 +195,7 @@ namespace Gaskeun_.Models
             cmd.ExecuteNonQuery();
         }
 
-        public List<Transaksi> GetHistoryTransaksi(int userId)
+        public List<Transaksi> HistoryTransaksi(int userId)
         {
             var listTransaksi = new List<Transaksi>();
 
@@ -223,7 +228,6 @@ namespace Gaskeun_.Models
 
                 listTransaksi.Add(transaksi);
             }
-
             return listTransaksi;
         }
     }

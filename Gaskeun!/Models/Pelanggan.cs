@@ -8,12 +8,12 @@ namespace Gaskeun_.Models
 {
     public class Pelanggan
     {
-        public int IdAkun { get; set; }       
-        public string Username { get; set; }  
-        public string Email { get; set; }     
-        public string NoHp { get; set; }      
-        public string Password { get; set; }  
-        public string Status { get; set; }      
-        public string Foto { get; set; }        
+        public int IdAkun { get; set; }  
+        public string Username { get; set; }
+        public string Email { get; set; }
+        public string NoHp { get; set; }
+        public string Password { get; set; }
+        public string Status { get; set; }
+        public string Foto { get; set; }
     }
 }

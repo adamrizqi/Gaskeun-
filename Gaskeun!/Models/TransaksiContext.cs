@@ -54,13 +54,13 @@ namespace Gaskeun_.Models
                 string query = @"UPDATE transaksi SET tanggal_keterlambatan = @tanggal_keterlambatan, denda = @denda, harga = @harga, status = @status
                         WHERE id_transaksi = @id_transaksi;";
                 conn.Open();
-                using (Npgsql.NpgsqlCommand cmd = new Npgsql.NpgsqlCommand(query, conn))
+                using (Npgsql.NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
                 {
-                    cmd.Parameters.Add(new Npgsql.NpgsqlParameter("@id_transaksi", transaksi.IdTransaksi));
-                    cmd.Parameters.Add(new Npgsql.NpgsqlParameter("@tanggal_keterlambatan", transaksi.TanggalKeterlambatan.ToDateTime(TimeOnly.MinValue)));
-                    cmd.Parameters.Add(new Npgsql.NpgsqlParameter("@denda", transaksi.Denda));
-                    cmd.Parameters.Add(new Npgsql.NpgsqlParameter("@harga", transaksi.Harga));
-                    cmd.Parameters.Add(new Npgsql.NpgsqlParameter("@status", transaksi.Status));
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_transaksi", transaksi.IdTransaksi));
+                    cmd.Parameters.Add(new NpgsqlParameter("@tanggal_keterlambatan", transaksi.TanggalKeterlambatan.ToDateTime(TimeOnly.MinValue)));
+                    cmd.Parameters.Add(new NpgsqlParameter("@denda", transaksi.Denda));
+                    cmd.Parameters.Add(new NpgsqlParameter("@harga", transaksi.Harga));
+                    cmd.Parameters.Add(new NpgsqlParameter("@status", transaksi.Status));
 
                     cmd.CommandType = System.Data.CommandType.Text;
                     int jmlDataTerupdate = cmd.ExecuteNonQuery();

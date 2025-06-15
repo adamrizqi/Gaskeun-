@@ -73,7 +73,7 @@ namespace Gaskeun_.Controller
         }
         public List<Transaksi> GetHistoryTransaksi(int userId)
         {
-            return pelangganContext.GetHistoryTransaksi(userId);
+            return pelangganContext.HistoryTransaksi(userId);
         }
         public string GetUserPhoto(int userId)
         {

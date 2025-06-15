@@ -11,7 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using static System.Net.Mime.MediaTypeNames;
 
 namespace Gaskeun_.View
 {
@@ -100,8 +99,6 @@ namespace Gaskeun_.View
                 MessageBox.Show("Plat motor harus diisi!");
                 return;
             }
-
-            //Kendaraan newMotor = GetMotor();
             if (motorControl.UpdateKendaraan(GetMotor(), platLama))
             {
                 MessageBox.Show("Data motor berhasil diperbarui!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -119,7 +116,6 @@ namespace Gaskeun_.View
 
         private void btnHapus_Click(object sender, EventArgs e)
         {
-            //Kendaraan motor = GetMotor();
             if (motorControl.DeleteKendaraan(GetMotor()))
             {
                 MessageBox.Show("Data motor berhasil dihapus!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -156,15 +152,12 @@ namespace Gaskeun_.View
                 image.Image = null;
                 return;
             }
-
             try
             {
                 using var wc = new System.Net.WebClient();
                 byte[] imageBytes = await wc.DownloadDataTaskAsync(url);
-
                 using var ms = new System.IO.MemoryStream(imageBytes);
                 Image img = Image.FromStream(ms);
-
                 image.Image = img;
             }
             catch
@@ -172,7 +165,6 @@ namespace Gaskeun_.View
                 image.Image = null;
             }
         }
-
         private void VehicleData_Load(object sender, EventArgs e)
         {
             dataGridView1.Columns[1].Width = 150; // Lebar kolom NamaKendaraan
@@ -180,8 +172,6 @@ namespace Gaskeun_.View
             dataGridView1.Columns[6].Width = 100; // Lebar kolom Gambar
             dataGridView1.Columns[8].Width = 160; // Lebar kolom HargaMinggu
         }
-
-        //Cloudinary storage setup dan image upload
         private void cloudinaryStorage()
         {
             Account account = new Account(CLOUD_NAME, API_KEY, API_SECRET);
@@ -212,14 +202,12 @@ namespace Gaskeun_.View
         {
             cloudinaryStorage();
         }
-
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             tbGambar.Text = imageUrl;
             image.Load(imageUrl);
             MessageBox.Show("Gambar berhasil diupload!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void btnUpload_Click(object sender, EventArgs e)
         {
             backgroundWorker1.RunWorkerAsync();

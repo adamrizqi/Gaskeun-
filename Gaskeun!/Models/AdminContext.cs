@@ -22,7 +22,6 @@ namespace Gaskeun_.Models
                     cmd.Parameters.AddWithValue("username", username);
                     cmd.Parameters.AddWithValue("password", password);
                     cmd.Parameters.AddWithValue("role", "admin");
-
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
                     if (count > 0)
                     {

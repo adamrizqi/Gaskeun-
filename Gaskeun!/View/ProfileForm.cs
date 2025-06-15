@@ -55,7 +55,6 @@ namespace Gaskeun_.View
             dataGridHistory.Columns["Denda"].Visible = false;
             dataGridHistory.Columns["MetodePembayaran"].Visible = false;
             dataGridHistory.Columns["Jaminan"].Visible = false;
-
         }
 
         private void cloudinaryStorage()
@@ -113,7 +112,6 @@ namespace Gaskeun_.View
                 MessageBox.Show("Terjadi kesalahan saat upload: " + ex.Message);
             }
         }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();

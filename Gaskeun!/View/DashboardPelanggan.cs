@@ -19,7 +19,6 @@ namespace Gaskeun_.View
         {
             InitializeComponent();
         }
-
         private void Dashboard_Load(object sender, EventArgs e)
         {
             SetFilterButtonActive(btnsemua);
@@ -43,13 +42,10 @@ namespace Gaskeun_.View
                 imgprofil.Image = Properties.Resources.user__1_;
             }
         }
-
         private void panelsearch_Paint(object sender, PaintEventArgs e)
         {
             UIHelper.MakeRoundedCorners(sender as Panel, 35, e);
         }
-
-
         private void imglogout_Click(object sender, EventArgs e)
         {
             Gaskeun_.Helpers.Session.ClearSession();
@@ -59,7 +55,6 @@ namespace Gaskeun_.View
             loginForm.ShowDialog();
             this.Close();
         }
-
         private void LoadDataKendaraan(string filter)
         {
             flowkendaraan.Controls.Clear();
@@ -82,13 +77,11 @@ namespace Gaskeun_.View
 
             KendaraanLoader.LoadKendaraan(flowkendaraan, kendaraanList);
         }
-
         private void textSearch_TextChanged(object sender, EventArgs e)
         {
             string keyword = textSearch.Text.Trim().ToLower();
             KendaraanFilter.FilterKendaraan(flowkendaraan, keyword);
         }
-
         private void textSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -97,7 +90,6 @@ namespace Gaskeun_.View
                 textSearch.Clear();
             }
         }
-
         private void textSearch_Enter(object sender, EventArgs e)
         {
             if (textSearch.Text == "Search anything")
@@ -106,7 +98,6 @@ namespace Gaskeun_.View
                 textSearch.ForeColor = Color.Black;
             }
         }
-
         private void textSearch_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textSearch.Text))
@@ -123,25 +114,21 @@ namespace Gaskeun_.View
                 }
             }
         }
-
         private void btnsemua_Click(object sender, EventArgs e)
         {
             SetFilterButtonActive(btnsemua);
             LoadDataKendaraan("Semua");
         }
-
         private void btnmobil_Click(object sender, EventArgs e)
         {
             SetFilterButtonActive(btnmobil);
             LoadDataKendaraan("Mobil");
         }
-
         private void btnmotor_Click(object sender, EventArgs e)
         {
             SetFilterButtonActive(btnmotor);
             LoadDataKendaraan("Motor");
         }
-
         private void SetFilterButtonActive(Button activeButton)
         {
             foreach (var control in panelFilter.Controls)
@@ -152,12 +139,9 @@ namespace Gaskeun_.View
                     btn.ForeColor = Color.Black;
                 }
             }
-
-
             activeButton.BackColor = Color.SteelBlue;
             activeButton.ForeColor = Color.White;
         }
-
         private void imgprofil_Click(object sender, EventArgs e)
         {
             this.Hide();

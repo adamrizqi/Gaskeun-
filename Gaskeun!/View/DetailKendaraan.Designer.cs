@@ -41,12 +41,10 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
             label8 = new Label();
             lblplat = new Label();
             lbltahun = new Label();
             lblmerk = new Label();
-            lblwarna = new Label();
             label13 = new Label();
             label14 = new Label();
             label15 = new Label();
@@ -124,7 +122,7 @@
             // 
             lblketersediaan.AutoSize = true;
             lblketersediaan.Font = new Font("Segoe UI", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblketersediaan.Location = new Point(322, 956);
+            lblketersediaan.Location = new Point(322, 925);
             lblketersediaan.Margin = new Padding(2, 0, 2, 0);
             lblketersediaan.Name = "lblketersediaan";
             lblketersediaan.Size = new Size(65, 25);
@@ -234,22 +232,11 @@
             label6.TabIndex = 12;
             label6.Text = "Merk";
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 10.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(183, 920);
-            label7.Margin = new Padding(2, 0, 2, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(67, 25);
-            label7.TabIndex = 13;
-            label7.Text = "Warna";
-            // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 10.875F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(183, 956);
+            label8.Location = new Point(183, 925);
             label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
             label8.Size = new Size(62, 25);
@@ -288,17 +275,6 @@
             lblmerk.Size = new Size(59, 25);
             lblmerk.TabIndex = 17;
             lblmerk.Text = "Merk";
-            // 
-            // lblwarna
-            // 
-            lblwarna.AutoSize = true;
-            lblwarna.Font = new Font("Segoe UI", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblwarna.Location = new Point(322, 920);
-            lblwarna.Margin = new Padding(2, 0, 2, 0);
-            lblwarna.Name = "lblwarna";
-            lblwarna.Size = new Size(70, 25);
-            lblwarna.TabIndex = 18;
-            lblwarna.Text = "Warna";
             // 
             // label13
             // 
@@ -672,12 +648,10 @@
             Controls.Add(label15);
             Controls.Add(label14);
             Controls.Add(label13);
-            Controls.Add(lblwarna);
             Controls.Add(lblmerk);
             Controls.Add(lbltahun);
             Controls.Add(lblplat);
             Controls.Add(label8);
-            Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -726,12 +700,10 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private Label label7;
         private Label label8;
         private Label lblplat;
         private Label lbltahun;
         private Label lblmerk;
-        private Label lblwarna;
         private Label label13;
         private Label label14;
         private Label label15;
