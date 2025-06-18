@@ -48,8 +48,7 @@ namespace Gaskeun_.View
         }
         private void imglogout_Click(object sender, EventArgs e)
         {
-            Gaskeun_.Helpers.Session.ClearSession();
-
+            Session.ClearSession();
             this.Hide();
             Form1 loginForm = new Form1();
             loginForm.ShowDialog();
@@ -58,7 +57,6 @@ namespace Gaskeun_.View
         private void LoadDataKendaraan(string filter)
         {
             flowkendaraan.Controls.Clear();
-
             flowkendaraan.Controls.Add(imgbanner);
             flowkendaraan.Controls.Add(panelFilter);
 

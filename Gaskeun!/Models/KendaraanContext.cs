@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -85,7 +86,7 @@ namespace Gaskeun_.Models
         public bool Update(Kendaraan kendaraan, string platLama)
         {
             bool isSuccess = false;
-            using(var conn = GetConnection())
+            using (var conn = GetConnection())
             {
                 string query = @"UPDATE kendaraan SET plat = @plat, nama_kendaraan = @nama_kendaraan, 
                                 merk = @merk, tahun = @tahun, cc = @cc, kapasitas_bensin = @kapasitas_bensin, gambar = @gambar, 
@@ -158,6 +159,55 @@ namespace Gaskeun_.Models
                             if (t != null && t.Plat.Equals(kendaraan.Plat))
                             {
                                 t.Status = kendaraan.Status;
+                            }
+                        }
+                    }
+                }
+            }
+            return isSuccess;
+        }
+        public string ReadID(int idKendaraan)
+        {
+            string status = "";
+            using (var conn = GetConnection())
+            {
+                string query = @"SELECT status FROM kendaraan WHERE id_kendaraan = @id_kendaraan AND status != 'Dihapus'";
+                conn.Open();
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.Add(new NpgsqlParameter("@id_kendaraan", idKendaraan));
+                    cmd.CommandText = query;
+                    NpgsqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        status = (string)reader["status"];
+                    }
+                }
+            }
+            return status;
+        }
+        public bool UpdateStatus(int idKendaraan, string status)
+        {
+            bool isSuccess = false;
+            using (var conn = GetConnection())
+            {
+                string query = @"UPDATE kendaraan SET status = @status WHERE id_kendaraan = @id_kendaraan;";
+                conn.Open();
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.Add(new NpgsqlParameter(@"id_kendaraan", idKendaraan));
+                    cmd.Parameters.Add(new NpgsqlParameter(@"status", status));
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    int jmlDataTerupdate = cmd.ExecuteNonQuery();
+                    if (jmlDataTerupdate > 0)
+                    {
+                        isSuccess = true;
+                        foreach (var temp in this.listKendaraan)
+                        {
+                            var t = temp as Kendaraan;
+                            if (t != null && t.IdKendaraan.Equals(idKendaraan))
+                            {
+                                t.Status = status;
                             }
                         }
                     }

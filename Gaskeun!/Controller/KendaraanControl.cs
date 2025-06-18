@@ -30,5 +30,13 @@ namespace Gaskeun_.Controller
         {
             return kendaraanContext.Delete(kendaraan);
         }
+        public string ReadID(int idKendaraan)
+        {
+            return kendaraanContext.ReadID(idKendaraan);
+        }
+        public bool UpdateStatus(int idKendaraan, string status)
+        {
+            return kendaraanContext.UpdateStatus(idKendaraan, status);
+        }
     }
 }

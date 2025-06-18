@@ -168,7 +168,6 @@ namespace Gaskeun_.View
                 }
 
                 int idPelanggan = Session.CurrentUserId;
-
                 this.IdKendaraan = kendaraan.IdKendaraan;
 
                 string alamatPengambilan = txtboxpengambilan.Text.Trim();
@@ -217,7 +216,17 @@ namespace Gaskeun_.View
                 };
 
                 TransaksiControl transaksiControl = new TransaksiControl();
+                KendaraanControl kendaraanControl = new KendaraanControl();
+                string statusKendaraan = kendaraanControl.ReadID(IdKendaraan);
+
+                if (statusKendaraan == "Disewa")
+                {
+                    MessageBox.Show("Kendaraan ini sedang disewa", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 bool success = transaksiControl.AddTransaksi(transaksi);
+                kendaraanControl.UpdateStatus(IdKendaraan, "Disewa");
 
                 if (success)
                 {
