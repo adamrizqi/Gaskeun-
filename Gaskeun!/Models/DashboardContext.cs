@@ -78,6 +78,7 @@ namespace Gaskeun_.Models
                         dataDashboard.PaketSewa = (string)reader["paket_sewa"];
                         dataDashboard.Harga = (decimal)reader["harga"];
                         listDataDashboard.Add(dataDashboard);
+
                     }
                 }
                 return listDataDashboard;
