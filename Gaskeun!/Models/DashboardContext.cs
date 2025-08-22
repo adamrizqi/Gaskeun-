@@ -79,6 +79,8 @@ namespace Gaskeun_.Models
                         dataDashboard.Harga = (decimal)reader["harga"];
                         listDataDashboard.Add(dataDashboard);
 
+
+
                     }
                 }
                 return listDataDashboard;
